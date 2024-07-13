@@ -24,11 +24,12 @@ function Header() {
 
 
                     <div style={{marginLeft: 20}}>
-                        <Link to="/likes">
+                        <Link to="/#">
                             <i className='fa fa-heart fa-1x' style={{color:'black', marginRight: 15 }}></i>
                         </Link>
-                        <Link to="/cart">
-                            <i className='fa fa-shopping-cart fa-1x' style={{color:'black' }}></i> {cartItems.length}
+                        <Link to="/cart" style={{padding: 10, backgroundColor: '#999', borderRadius: '50%', width: 15, height: 10}}>
+                            <i className='fa fa-shopping-cart' style={{color:'black' }}></i> 
+                            <sup className="badge badge-danger ml-1" style={{fontSize: 7}}>{cartItems.length}</sup>
                         </Link>
                     </div>
 

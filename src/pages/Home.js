@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { getAllProducts } from "./utils";
 import Product from "./components/Product";
+import Loader from "./utils/Loader";
 
 const HomeCard = () => {
     const [loading, setLoading] = useState(true);
@@ -33,8 +34,6 @@ const HomeCard = () => {
         getItems();
 
     }, [page]); 
-
-    console.log(data)
     
     return (
         <>
@@ -48,9 +47,11 @@ const HomeCard = () => {
                 </div>
 
                 <div className='row' style={{minHeight: 450}}>    
-                    {items && items.map((item, i) => (
-                        <Product product={item} key={i} />
-                    ))}
+                    {loading ? <Loader /> : 
+                        (items && items.length > 0) && items.map((item, i) => (
+                            <Product product={item} key={i} />
+                        ))
+                    }
                 </div>
 
 

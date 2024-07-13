@@ -1,14 +1,11 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import { formatAmount } from "../utils";
 
 const CartItem = ({ product }) => {
-    console.log(product)
     
     let price = product.current_price.map((price) =>  price["NGN"] )
     let final_price = price.map((real_price, ) => real_price[0] )
     
-    // console.log(product.unique_id)
     let image = product.photos[0]?.url; 
     let imageUrl = `https://api.timbu.cloud/images/${image}`;
 
@@ -24,6 +21,8 @@ const CartItem = ({ product }) => {
         localStorage.setItem("futura:cart", JSON.stringify(updatedCartItems));
         
         alert('Item removed from cart');
+        
+        window.location.reload()
     }
 
 
@@ -49,7 +48,13 @@ const CartItem = ({ product }) => {
                             <i className='fas fa-star'></i>
                             <i className='fas fa-star'></i>
                         </div>
-                        <button type="button" onClick={()=> removeFromCart(product.id)} className='btn'>Remove from Cart</button>
+                        <button 
+                            type="button" 
+                            onClick={()=> removeFromCart(product.id)} 
+                            className='btn'
+                        >
+                            Remove from Cart
+                        </button>
                     </div>
                 </div>
             </div>
