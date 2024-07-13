@@ -10,7 +10,6 @@ const Product = ({ product }) => {
     let image = product.photos[0]?.url; 
     let imageUrl = `https://api.timbu.cloud/images/${image}`;
 
-    
     const addToCart = (product) => {
         
         // Parse any JSON previously stored in cart
@@ -27,19 +26,18 @@ const Product = ({ product }) => {
             cartItems.push(product);
             localStorage.setItem("futura:cart", JSON.stringify(cartItems));
         }
-
     }
 
 
-    const isInCart = (product) => {
-        let productExists;
-        var cartItems = JSON.parse(localStorage.getItem("futura:cart"));
-        if(cartItems.length > 0){
-            productExists = cartItems && cartItems?.some(item => item.id === product.id);
-        }
+    // const isInCart = (product) => {
+    //     let productExists;
+    //     var cartItems = JSON.parse(localStorage.getItem("futura:cart"));
+    //     if(cartItems.length > 0){
+    //         productExists = cartItems && cartItems?.some(item => item.id === product.id);
+    //     }
 
-        if(productExists) return true;
-    }
+    //     if(productExists) return true;
+    // }
 
 
     return (
@@ -64,7 +62,14 @@ const Product = ({ product }) => {
                             <i className='fas fa-star'></i>
                             <i className='fas fa-star'></i>
                         </div>
-                        <button type="button" onClick={()=> addToCart(product)} disabled={isInCart(product)} className='btn'>Add to Cart</button>
+                        <button 
+                            type="button" 
+                            onClick={()=> addToCart(product)} 
+                            // disabled={isInCart(product)} 
+                            className='btn'
+                        >
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>
