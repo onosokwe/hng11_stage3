@@ -1169,6 +1169,7 @@
     height: 40px;
     line-height: 40px;
     text-align: center;
+    text-decoration: none;
     border-radius: 50%;
     font-family: var(--font-secondary);
     margin: 5px;

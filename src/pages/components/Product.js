@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { formatAmount } from "../utils";
 
@@ -31,6 +31,14 @@ const Product = ({ product }) => {
     }
 
 
+    const isInCart = (product) => {
+        var cartItems = JSON.parse(localStorage.getItem("futura:cart"));
+        const productExists = cartItems.some(item => item.id === product.id);
+
+        if(productExists) return true;
+    }
+
+
     return (
         <>
             <div className='col-md-3 col-sm-6 mb-4'>
@@ -43,8 +51,8 @@ const Product = ({ product }) => {
                     </div>
                     <div className='item_desc'>
                         <h4>
-                            <Link to={`/product/${product.unique_id}`}>{product?.name}</Link> 
-                            <span className="badge badge-warning">NGN[{ formatAmount(final_price) }]</span>
+                            <a href={`/product/${product.unique_id}`}>{product?.name}</a> 
+                            <span className="badge badge-warning">NGN { formatAmount(final_price) }</span>
                         </h4>
                         <div className='item_star'>
                             <i className='fas fa-star'></i>
@@ -53,7 +61,7 @@ const Product = ({ product }) => {
                             <i className='fas fa-star'></i>
                             <i className='fas fa-star'></i>
                         </div>
-                        <button type="button" onClick={()=> addToCart(product)} className='btn'>Add to Cart</button>
+                        <button type="button" onClick={()=> addToCart(product)} disabled={isInCart(product)} className='btn'>Add to Cart</button>
                     </div>
                 </div>
             </div>

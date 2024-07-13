@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 
 function Header() {
 
+    var cartItems = JSON.parse(localStorage.getItem("futura:cart"));
+        if (cartItems == null) cartItems = [];
+
+
+
     return (
         <>
             <header id="header" className="header d-flex align-items-center fixed-top">
@@ -19,12 +24,12 @@ function Header() {
 
 
                     <div style={{marginLeft: 20}}>
-                        <Link to="/cart">
+                        <Link to="/likes">
                             <i className='fa fa-heart fa-1x' style={{color:'black', marginRight: 15 }}></i>
                         </Link>
-                        <a href="/#">
-                            <i className='fa fa-shopping-cart fa-1x' style={{color:'black' }}></i>
-                        </a>
+                        <Link to="/cart">
+                            <i className='fa fa-shopping-cart fa-1x' style={{color:'black' }}></i> {cartItems.length}
+                        </Link>
                     </div>
 
                 </div>
