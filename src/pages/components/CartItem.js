@@ -28,7 +28,7 @@ const CartItem = ({ product }) => {
 
     return (
         <>
-            <div className='col-md-3 col-sm-6 mb-4'>
+            <div className='col-md-4 col-sm-6 mb-4'>
                 <div className='item'>
                     <div className='item-image'>
                         <img src={imageUrl} alt='alpha' style={{height: '100%', minHeight:180, width:'100%'}} />
