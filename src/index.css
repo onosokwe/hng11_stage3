@@ -75,6 +75,11 @@ body {
  font-size: 15px;
  margin: 10px 0; 
 }
+.recently .item_desc h4 span {
+ font-size: 11px;
+ float: right;
+ margin: 0; 
+}
 .recently .item_desc .item_star {
   font-size: 12px;
   margin-bottom: 5px;
