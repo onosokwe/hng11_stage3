@@ -32,8 +32,11 @@ const Product = ({ product }) => {
 
 
     const isInCart = (product) => {
+        let productExists;
         var cartItems = JSON.parse(localStorage.getItem("futura:cart"));
-        const productExists = cartItems.some(item => item.id === product.id);
+        if(cartItems.length > 0){
+            productExists = cartItems && cartItems?.some(item => item.id === product.id);
+        }
 
         if(productExists) return true;
     }
