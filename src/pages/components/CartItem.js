@@ -32,8 +32,8 @@ const CartItem = ({ product }) => {
                 <div className='item'>
                     <div className='item-image'>
                         <img src={imageUrl} alt='alpha' style={{height: '100%', minHeight:180, width:'100%'}} />
-                        <a href='./#' className='icon-btn'>
-                            <i className='fa fa-heart position-absolute'></i>
+                        <a href='#' onClick={()=> removeFromCart(product.id)} className='icon-btn'>
+                            <i className='fa fa-trash position-absolute'></i>
                         </a>
                     </div>
                     <div className='item_desc'>
@@ -48,13 +48,23 @@ const CartItem = ({ product }) => {
                             <i className='fas fa-star'></i>
                             <i className='fas fa-star'></i>
                         </div>
-                        <button 
-                            type="button" 
-                            onClick={()=> removeFromCart(product.id)} 
-                            className='btn'
-                        >
-                            Remove from Cart
-                        </button>
+                        <div className="btn-group">
+                            <button 
+                                type="button" 
+                                onClick={()=> removeFromCart(product.id)} 
+                                className='btn'
+                            >
+                                <i className="fa fa-plus"></i>    
+                            </button>
+                            <button 
+                                type="button" 
+                                style={{float:'right', backgroundColor:'red', }}
+                                onClick={()=> removeFromCart(product.id)} 
+                                className='btn pull-right'
+                                >
+                                <i className="fa fa-minus"></i>  
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

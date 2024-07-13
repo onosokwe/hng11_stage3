@@ -25,18 +25,18 @@ const Product = ({ product }) => {
             // Add product to cart and save back to local storage
             cartItems.push(product);
             localStorage.setItem("futura:cart", JSON.stringify(cartItems));
+            alert('Item added to cart successfully');
         }
     }
-
 
     // const isInCart = (product) => {
     //     let productExists;
     //     var cartItems = JSON.parse(localStorage.getItem("futura:cart"));
     //     if(cartItems.length > 0){
-    //         productExists = cartItems && cartItems?.some(item => item.id === product.id);
+    //         productExists = cartItems && cartItems.filter(item => item.id === product.id);
     //     }
 
-    //     if(productExists) return true;
+    //     if(productExists) {return true;
     // }
 
 
