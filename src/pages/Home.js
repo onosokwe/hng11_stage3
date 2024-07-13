@@ -59,13 +59,13 @@ const HomeCard = () => {
                     <div className="col-md-12">
                         <div className="text-start py-4">
                             <div className="custom-pagination">
-                                <a href={`?page=${data.previous_page !== null ? data.previous_page : 1}`} disabled className="prev">
+                                <a href={`?page=${data.previous_page !== null ? (data.page - 1) : 1}`} disabled className="prev">
                                     Previous
                                 </a>
                                 <a href={`?page=${data.page !== null ? data.page : ""}`} className="active">
                                     {data.page ? data.page : 1}
                                 </a>
-                                <a href={`?page=${data.page !== null ? data.page : (page + 1)}`} className="next">
+                                <a href={`?page=${data.page !== null ? (data.page + 1) : (page + 1)}`} className="next">
                                     Next
                                 </a>
                             </div>

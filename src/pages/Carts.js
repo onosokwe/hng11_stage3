@@ -83,7 +83,7 @@ const Carts = () => {
                                 className="btn btn-block btn-success"
                                 disabled={cartItems.length === 0}
                             >
-                                Clear Cart
+                                Checkout
                             </button>
                         </div>
                         </div>

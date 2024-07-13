@@ -32,9 +32,9 @@ const CartItem = ({ product }) => {
                 <div className='item'>
                     <div className='item-image'>
                         <img src={imageUrl} alt='alpha' style={{height: '100%', minHeight:180, width:'100%'}} />
-                        <a href='#' onClick={()=> removeFromCart(product.id)} className='icon-btn'>
-                            <i className='fa fa-trash position-absolute'></i>
-                        </a>
+                        <button type="button" onClick={()=> removeFromCart(product.id)} className='xicon-btn'>
+                            <i className='fa fa-times xposition-absolute'></i>
+                        </button>
                     </div>
                     <div className='item_desc'>
                         <h4>
