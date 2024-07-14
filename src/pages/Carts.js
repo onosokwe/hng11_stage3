@@ -48,6 +48,8 @@ const Carts = () => {
         window.location.reload()
     }
     
+    console.log(cartItems)
+
  
     return (
         <>

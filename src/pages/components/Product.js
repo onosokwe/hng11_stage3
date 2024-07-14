@@ -10,7 +10,7 @@ const Product = ({ product }) => {
     let image = product.photos[0]?.url; 
     let imageUrl = `https://api.timbu.cloud/images/${image}`;
 
-    const addToCart = (product) => {
+    const addToCart = (product, quantity = 1) => {
         
         // Parse any JSON previously stored in cart
         var cartItems = JSON.parse(localStorage.getItem("futura:cart"));
@@ -20,10 +20,11 @@ const Product = ({ product }) => {
         const productExists = cartItems.some(item => item.id === product.id);
         
         if (productExists) {
-            alert('Item already added to cart');
+            product.quantity += quantity;
+            alert('Item quantity in cart is now: ' + product.quantity);
         } else {
             // Add product to cart and save back to local storage
-            cartItems.push(product);
+            cartItems.push({ ...product, quantity: quantity });
             localStorage.setItem("futura:cart", JSON.stringify(cartItems));
             alert('Item added to cart successfully');
         }

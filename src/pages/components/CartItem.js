@@ -9,6 +9,13 @@ const CartItem = ({ product }) => {
     let image = product.photos[0]?.url; 
     let imageUrl = `https://api.timbu.cloud/images/${image}`;
 
+    function getCartItems() {
+        // Check if cart items exist in localStorage
+        let cartItems = localStorage.getItem('futura:cart');
+        return cartItems ? JSON.parse(cartItems) : [];
+    }
+
+
     const removeFromCart = (productId) => {
         // Parse any JSON previously stored in cart
         var cartItems = JSON.parse(localStorage.getItem("futura:cart"));
@@ -23,6 +30,20 @@ const CartItem = ({ product }) => {
         alert('Item removed from cart');
         
         window.location.reload()
+    }
+
+    const incrementQuantity = (productId) => {
+        let cartItems = getCartItems();
+    
+        // Find item in cart
+        let found = cartItems.find(cartItem => cartItem.id === productId);
+        if (found) {
+            // Increment quantity
+            found.quantity++;
+    
+            // Save updated cart items back to localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
     }
 
 
@@ -48,18 +69,23 @@ const CartItem = ({ product }) => {
                             <i className='fas fa-star'></i>
                             <i className='fas fa-star'></i>
                         </div>
-                        <div className="btn-group">
+                        <div className="text-group">
                             <button 
                                 type="button" 
-                                onClick={()=> removeFromCart(product.id)} 
+                                style={{float:'left', padding:3, width:40, backgroundColor:'#000', }}
+                                // onClick={()=> removeFromCart(product.id)} 
                                 className='btn'
                             >
                                 <i className="fa fa-plus"></i>    
                             </button>
+                            {/* <button className="btn-my" style={{border:'none'}}>
+                                <span>{product?.quantity || 1}</span>
+
+                            </button> */}
                             <button 
                                 type="button" 
-                                style={{float:'right', backgroundColor:'red', }}
-                                onClick={()=> removeFromCart(product.id)} 
+                                style={{float:'right', padding:3, width:40, backgroundColor:'red', }}
+                                // onClick={()=> removeFromCart(product.id)} 
                                 className='btn pull-right'
                                 >
                                 <i className="fa fa-minus"></i>  

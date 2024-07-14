@@ -73,6 +73,13 @@ body {
   width: 30px;
   display: inline-block;
 }
+
+.recently .item_desc .btn-my {
+  width: auto;
+  display: block;
+  width: 100%;
+}
+
 .recently .item-image .position-absolute {
   color: #ff6a00;
   margin-top: 3px;
